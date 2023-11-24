@@ -25,7 +25,8 @@ replay_pid*
 
 .vscode/
 /.metadata/
-
+.settings
 .classpath
 .project
 
+Servers/
