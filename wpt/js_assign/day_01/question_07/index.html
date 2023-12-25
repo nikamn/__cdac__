@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Question 7</title>
+  <script src="../../jquery-3.7.1.min.js"></script>
+
+  <script>
+    $(document).ready(function () {
+      $("#btn").click(function () {
+        $("#msg").html("");
+        $("#nums").html("");
+        $("#res").html("");
+        $("#err_msgs").html("");
+        let num = $("#num").val();
+        if (num.length == 0) {
+          $("#msg").html("Number is empty").css("color", "crimson");
+          return;
+        } else {
+          $("#msg").html("");
+          console.log(num);
+        }
+
+        let n = parseInt(num);
+        if (n === 0) {
+          $("#msg").html("Number list contains 0 elements. Provide Number > 0").css("color", "crimson");
+          return;
+        }
+
+        let str = "<hr/>";
+        $("#nums").html(str);
+
+        for (let i = 1; i <= n; i++) {
+          str += `<p><label for="num${i}">Number ${i}: </label><input type="number" id="num${i}"> <span hidden=""></span></p>`;
+        }
+
+        str += `<button type="button" id="btn_min">Find Min</button><hr/>`;
+
+        $("#nums").html(str);
+
+        $("#btn_min").click(function () {
+          $("#err_msgs").html("");
+
+          let flag = false;
+          for(let i = 1; i <= n; i++) {
+            if ($(`#num${i}`).val() === "") {
+              $("#err_msgs").append(`<p>Number ${i} is not given</p>`);
+              flag = true;
+            }
+          }
+
+          if (flag) return;
+          
+          let min = parseInt($("#num1").val());
+          console.log(min);
+          let temp;
+          for(let i = 2; i <= n; i++) {
+            temp = $(`#num${i}`).val();
+            if (temp < min) {
+              min = temp;
+            }
+          }
+
+          $("#res").html(`Minimum Number = ${min}`)
+        });
+      });
+
+      
+    });
+  </script>
+</head>
+
+<body>
+  <div>
+    <label for="num">Number of Arguments: </label>
+    <input type="number" id="num">
+    <button type="button" id="btn">Click</button>
+  </div>
+  <p id="msg"></p>
+  <div id="nums"></div>
+  <p id="res" style="color: blueviolet;"></p>
+  <div id="err_msgs" style="color: red;"></div>
+</body>
+
+</html>

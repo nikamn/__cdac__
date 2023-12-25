@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Question 11</title>
+    <link rel="stylesheet" href="../../bootstrap.min.css">
+    <script src="../../jquery-3.7.1.min.js"></script>
+    
+    <style>
+        label {
+            color: blueviolet;
+        }
+
+        td {
+            text-align: center;
+        }
+    </style>
+
+    <script>
+        let weekdays = ["Sunday", "Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday"];
+
+        $(document).ready(function () {
+            $("#btn").click(function () {
+                $("#day").val("");
+                const date = new Date($("#date").val());
+                $("#day").val(" " + weekdays[date.getDay()]);
+            });
+        });
+    </script>
+</head>
+
+<body>
+    <header>
+        <nav class="navbar navbar-expand-lg bg-body-tertiary" style="background-color: grey !important;">
+            <div class="container-fluid">
+                <a class="navbar-brand" href="#">GetWeekDay</a>
+            </div>
+        </nav>
+        </header>
+        <main style="margin-top: 230px;">
+            <section class="container-fluid">
+                <table class="table table-bordered table-hover" style="margin: 0 auto; width: 50%;">
+                    <tr>
+                        <td style="width: 30%;" class="table-success"><label for="day">
+                                <h6>Select Date</h6>
+                            </label></td>
+                        <td style="width: 30%;" class="table-info"><input type="date" id="date"></td>
+                    </tr>
+                    <tr>
+                        <td class="table-info"></td>
+                        <td class="table-success">
+                            <button type="button" id="btn" class="btn btn-primary">Get Day</button>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td class="table-success"><label for="day">
+                                <h6>Day on selected date</h6>
+                            </label></td>
+                        <td class="table-info"><input type="text" id="day" readonly></td>
+                    </tr>
+                </table>
+            </section>
+        </main>
+        <footer class="bg-body-tertiary text-center text-lg-start"
+            style="position: fixed; bottom: 0; width: 100%; background-color: aquamarine !important;">
+            <div class="text-center p-3" style="background-color: rgba(0, 0, 0, 0.05);">
+                © 2023 Copyright:
+                <a class="text-body" href="https://mdbootstrap.com/">nikamn.in</a>
+            </div>
+        </footer>
+        <script src="../../bootstrap.bundle.min.js"></script>
+</body>
+
+</html>

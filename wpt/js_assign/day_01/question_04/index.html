@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Question 4</title>
+    <script src="../../jquery-3.7.1.min.js"></script>
+    <script>
+      $(document).ready(function () {
+        $("#btn").click(function () {
+          let num1 = parseInt($("#num1").val());
+          let num2 = parseInt($("#num2").val());
+          let op = $("#ops").val();
+
+          let res;
+
+          switch (op) {
+            case "+":
+              res = num1 + num2;
+              break;
+
+            case "-":
+              res = num1 - num2;
+              break;
+
+            case "*":
+              res = num1 * num2;
+              break;
+
+            case "/":
+              // if you want to throw custom exception message
+              //   if (num2 == 0) {
+              //     $("#res")
+              //       .html(`Cannot divide by 0`)
+              //       .css({ color: "magenta", marginTop: "10px" });
+              //     return;
+              //   }
+              res = num1 / num2;
+              break;
+          }
+
+          $("#res")
+            .html(`${num1} ${op} ${num2} = ${res}`)
+            .css({ color: "magenta", marginTop: "10px" });
+        });
+      });
+    </script>
+  </head>
+  <body>
+    <div>
+      <input type="number" id="num1" />
+      <select id="ops">
+        <option value="+">+</option>
+        <option value="-">-</option>
+        <option value="*">*</option>
+        <option value="/">/</option>
+      </select>
+      <input type="number" id="num2" />
+      <button type="button" id="btn">Calculate</button>
+    </div>
+    <p id="res"></p>
+  </body>
+</html>

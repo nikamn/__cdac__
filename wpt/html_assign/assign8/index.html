@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Feedback Form</title>
+  </head>
+  <body>
+    <section>
+      <fieldset>
+        <legend>Feedback Form</legend>
+        <p>Feedback about your experience during purchase of items.</p>
+        <table>
+          <form action="">
+            <tr>
+              <td><label name="type_of_problem">Type of problem : </label></td>
+              <td>
+                <select name="type_of_problem" id="problem">
+                  <option value="website_down">Website is Down</option>
+                  <option value="product_not_available">
+                    Product Not Available
+                  </option>
+                  <option value="missing_information">
+                    Missing Information
+                  </option>
+                </select>
+              </td>
+            </tr>
+
+            <tr>
+              <td><label for="username">Username : </label></td>
+              <td>
+                <input
+                  type="text"
+                  name="username"
+                  id="username"
+                  required
+                  placeholder="enter username"
+                /><span style="color: red">*</span>
+              </td>
+            </tr>
+
+            <tr>
+              <td><label for="email">Email : </label></td>
+              <td>
+                <input
+                  type="email"
+                  name="email"
+                  id="email"
+                  required
+                  placeholder="enter email"
+                /><span style="color: red">*</span>
+              </td>
+            </tr>
+
+            <tr>
+              <td><label name="location">Location : </label></td>
+              <td>
+                <select name="location" id="location" required>
+                  <option value="pune">Pune</option>
+                  <option value="mumbai">Mumbai</option>
+                  <option value="nagpur">Nagpur</option>
+                </select>
+                <span style="color: red">*</span>
+              </td>
+            </tr>
+
+            <tr>
+              <td><label for="phone">Phone : </label></td>
+              <td>
+                <input
+                  type="text"
+                  name="phone"
+                  id="phone"
+                  required
+                  placeholder="enter phone"
+                />
+              </td>
+            </tr>
+
+            <tr>
+                <td><label for="description">Problem Desctiption : </label></td>
+                <td>
+                    <textarea name="description" id="description" cols="40" rows="5" placeholder="enter your issue"></textarea>
+                </td>
+            </tr>
+
+            <tr>
+                <td><label for="notification">Get Notification</label></td>
+                <td>
+                    <input type="radio" name="notification" id="yes" value="yes"><label for="yes">Yes</label>
+                    <input type="radio" name="notification" id="no" value="no"><label for="no">No</label>
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <button type="submit">Submit</button>
+                </td>
+            </tr>
+          </form>
+        </table>
+      </fieldset>
+    </section>
+  </body>
+</html>

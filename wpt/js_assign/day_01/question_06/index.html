@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Question 6</title>
+    <script src="../../jquery-3.7.1.min.js"></script>
+    <script>
+      $(document).ready(function () {
+        $("#btn").click(function () {
+          let num = $("#num").val();
+          if (num.length == 0) {
+            $("#msg").html("Number is empty").css("color", "crimson");
+            return;
+          } else if (num.length != 5) {
+            $("#msg").html("Number is not of 5 digits").css("color", "crimson");
+            return;
+          } else {
+            $("#msg").html("");
+          }
+
+          let temp = parseInt(num);
+          let res = 0;
+          for (let i = 0; i < 5; i++) {
+            res += temp % 10;
+            temp = Math.floor(temp / 10);
+          }
+
+          $("#msg").html(`Sum of digits of ${num} = `).css("color", "crimson");
+          $("#res").html(`${res}`).css("color", "green");
+        });
+      });
+    </script>
+  </head>
+  <body>
+    <div>
+      <label for="num">Number</label>
+      <input type="number" id="num" />
+      <button type="button" id="btn">Find Sum</button>
+    </div>
+    <br>
+    <span id="msg"></span><span id="res"></span>
+  </body>
+</html>

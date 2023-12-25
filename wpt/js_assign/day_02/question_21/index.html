@@ -1,0 +1,135 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Question 21</title>
+    <link rel="stylesheet" href="../../bootstrap.min.css">
+    <script src="../../jquery-3.7.1.min.js"></script>
+    <style>
+        .form-container {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+        }
+
+        form {
+            width: 50%;
+        }
+
+        label {
+            font-size: medium;
+            font-weight: 600;
+        }
+
+        .mybtn {
+            width: 90px;
+        }
+
+        li:hover {
+            background-color: beige;
+        }
+    </style>
+    <script>
+        let members = new Set();
+        $(document).ready(function () {
+            $("#btn").click(function () {
+                let m = $("#member").val().trim();
+                if (/^[a-zA-Z' ']+$/.test(m)) {
+                    if (!members.has(m)) {
+                        members.add(m);
+
+                        let li_id = m + "li";
+                        str = `<li class="list-group-item">${m} <button type="button" class="btn btn-sm btn-danger text-center float-end" id="${m}">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-trash" viewBox="0 0 16 16">
+                            <path d="M5.5 5.5A.5.5 0 0 1 6 6v6a.5.5 0 0 1-1 0V6a.5.5 0 0 1 .5-.5m2.5 0a.5.5 0 0 1 .5.5v6a.5.5 0 0 1-1 0V6a.5.5 0 0 1 .5-.5m3 .5a.5.5 0 0 0-1 0v6a.5.5 0 0 0 1 0z" />
+                            <path d="M14.5 3a1 1 0 0 1-1 1H13v9a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V4h-.5a1 1 0 0 1-1-1V2a1 1 0 0 1 1-1H6a1 1 0 0 1 1-1h2a1 1 0 0 1 1 1h3.5a1 1 0 0 1 1 1zM4.118 4 4 4.059V13a1 1 0 0 0 1 1h6a1 1 0 0 0 1-1V4.059L11.882 4zM2.5 3h11V2h-11z" />
+                            </svg></button></li>`;
+
+                        $("#members").append(str);
+                    }
+                    $("#member").val("");
+                } else {
+                    $("#member").val("");
+                    return;
+                }
+            });
+
+            $("#member").keypress(function (event) {
+                let keycode = (event.keyCode ? event.keyCode : event.which);
+
+                if (keycode == 13) {
+                    let m = $("#member").val().trim();
+                    if (/^[a-zA-Z' ']+$/.test(m)) {
+                        if (!members.has(m)) {
+                            members.add(m);
+
+                            str = `<li class="list-group-item">${m} <button type="button" class="btn btn-sm btn-danger text-center float-end" id="${m}">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-trash" viewBox="0 0 16 16">
+                            <path d="M5.5 5.5A.5.5 0 0 1 6 6v6a.5.5 0 0 1-1 0V6a.5.5 0 0 1 .5-.5m2.5 0a.5.5 0 0 1 .5.5v6a.5.5 0 0 1-1 0V6a.5.5 0 0 1 .5-.5m3 .5a.5.5 0 0 0-1 0v6a.5.5 0 0 0 1 0z" />
+                            <path d="M14.5 3a1 1 0 0 1-1 1H13v9a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V4h-.5a1 1 0 0 1-1-1V2a1 1 0 0 1 1-1H6a1 1 0 0 1 1-1h2a1 1 0 0 1 1 1h3.5a1 1 0 0 1 1 1zM4.118 4 4 4.059V13a1 1 0 0 0 1 1h6a1 1 0 0 0 1-1V4.059L11.882 4zM2.5 3h11V2h-11z" />
+                            </svg></button></li>`;
+
+                            $("#members").append(str);
+                        }
+                    }
+                    $("#member").val("");
+                    event.preventDefault();
+                    event.stopPropagation();
+                }
+            });
+
+            $("#clear").click(function () {
+                members.clear();
+                $("#members").html("");
+            });
+
+            $("#members").on("click", "li button", function () {
+                //console.log(this.id);
+                //console.log(members);
+                members.delete(this.id);
+                //console.log(members);
+                document.getElementById(this.id).parentElement.remove();
+            });
+        });
+    </script>
+</head>
+
+<body>
+    <div class="form-container">
+        <form class="border border-3 p-5 rounded-3 was-validated" novalidate>
+            <div class="mb-3">
+                <label for="member" class="form-label">Add Member: </label>
+                <input type="text" class="form-control" id="member" placeholder="Enter Name" pattern="^[a-zA-Z' ']+$"
+                    required />
+                <div class="invalid-feedback">
+                    Please enter a name containing only letters and spaces.
+                </div>
+            </div>
+            <div class="mb-3">
+                <button type="button" class="btn btn-success mybtn" id="btn">Add</button>
+            </div>
+            <div class="mb-3">
+                <h6>All Members: </h6>
+                <ul class="list-group" id="members"></ul>
+            </div>
+            <div class="mb-3">
+                <button type="button" class="btn btn-outline-danger text-center mybtn" id="clear">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor"
+                        class="bi bi-trash" viewBox="0 0 16 16">
+                        <path
+                            d="M5.5 5.5A.5.5 0 0 1 6 6v6a.5.5 0 0 1-1 0V6a.5.5 0 0 1 .5-.5m2.5 0a.5.5 0 0 1 .5.5v6a.5.5 0 0 1-1 0V6a.5.5 0 0 1 .5-.5m3 .5a.5.5 0 0 0-1 0v6a.5.5 0 0 0 1 0z" />
+                        <path
+                            d="M14.5 3a1 1 0 0 1-1 1H13v9a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V4h-.5a1 1 0 0 1-1-1V2a1 1 0 0 1 1-1H6a1 1 0 0 1 1-1h2a1 1 0 0 1 1 1h3.5a1 1 0 0 1 1 1zM4.118 4 4 4.059V13a1 1 0 0 0 1 1h6a1 1 0 0 0 1-1V4.059L11.882 4zM2.5 3h11V2h-11z" />
+                    </svg> Clear
+                </button>
+            </div>
+        </form>
+    </div>
+
+    <script src="../../bootstrap.bundle.min.js"></script>
+</body>
+
+</html>
