@@ -1,0 +1,148 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>JS Question 24</title>
+    <script src="../../jquery-3.7.1.min.js"></script>
+    <script>
+        let users = new Map();
+
+        $(document).ready(function () {
+
+            $("#signup").click(function () {
+                $("#pass").html("");
+                $("#msgs").html("");
+                $("#err_uname").html("");
+                $("#err_pass").html("");
+
+                let uname = $('#uname').val();
+                let pass = $('#pass').val();
+
+                if (uname.length < 6 || uname.length > 10) {
+                    $("#err_uname").html("<span>Username length should be between 6 and 10</span>").css("color", "red");
+                    return;
+                } else {
+                    if (!/^[a-zA-Z]+$/.test(uname)) {
+                        $("#err_uname").html("<span>Username must be alphabetic</span>").css("color", "red");
+                        return;
+                    }
+                }
+
+                if (pass.length < 8) {
+                    $("#err_pass").html("<span>Password length should be greater than 8</span>").css("color", "red");
+                    return;
+                } else {
+                    if (!pass.includes("#")) {
+                        $("#err_pass").html("<span>Password must conatin single #</span>").css("color", "red");
+                        return;
+                    } else {
+                        if (pass.indexOf("#") != pass.lastIndexOf("#")) {
+                            $("#err_pass").html("<span>Password must conatin single #</span>").css("color", "brown");
+                            return;
+                        }
+
+                        if (!/[0-9]+/.test(pass)) {
+                            $("#err_pass").html("<span>Password must conatin at least one digit</span>").css("color", "red");
+                            return;
+                        }
+                    }
+                }
+
+                if (users.has(uname)) {
+                    $("#msgs").html(`<p>Username already exists ...!</p>`).css("color", "red");
+
+                } else {
+                    users.set(uname, pass);
+                    console.log(users);
+                    $("#msgs").html(`<p>Account created Successfully ...!</p><p>Please Login ...!</p>`).css("color", "green");
+                    $("#uname").val("");
+                    $("#pass").val("");
+                }
+            });
+
+
+            $('#login').click(function () {
+                $("#pass").html("");
+                $("#msgs").html("");
+                $("#err_uname").html("");
+                $("#err_pass").html("");
+
+                let uname = $('#uname').val();
+                let pass = $('#pass').val();
+
+                if (uname.length < 6 || uname.length > 10) {
+                    $("#err_uname").html("<span>Username length should be between 6 and 10</span>").css("color", "red");
+                    return;
+                } else {
+                    if (!/^[a-zA-Z]+$/.test(uname)) {
+                        $("#err_uname").html("<span>Username must be alphabetic</span>").css("color", "red");
+                        return;
+                    }
+                }
+
+                if (pass.length < 8) {
+                    $("#err_pass").html("<span>Password length should be greater than 8</span>").css("color", "red");
+                    return;
+                } else {
+                    if (!pass.includes("#")) {
+                        $("#err_pass").html("<span>Password must conatin single #</span>").css("color", "red");
+                        return;
+                    } else {
+                        if (pass.indexOf("#") != pass.lastIndexOf("#")) {
+                            $("#err_pass").html("<span>Password must conatin single #</span>").css("color", "brown");
+                            return;
+                        }
+
+                        if (!/[0-9]+/.test(pass)) {
+                            $("#err_pass").html("<span>Password must conatin at least one digit</span>").css("color", "red");
+                            return;
+                        }
+                    }
+                }
+
+                if (users.has(uname)) {
+                    if (users.get(uname) === pass) {
+                        $("#uname").val("");
+                        $("#pass").val("");
+                        $("#msgs").html(`<p>Login Successfull ...!</p><p>Welcome ${uname} ...!</p>`).css("color", "green");
+                    } else {
+                        $("#msgs").html(`<p>Invalid Username or Password ...!</p>`).css("color", "red");    // for invalid password
+                        $("#pass").val("");
+                    }
+                } else {
+                    $("#msgs").html(`<p>Invalid Username or Password ...!</p>`).css("color", "red");        // for invalid username
+                    $("#pass").val("");
+
+                }
+            })
+        })
+    </script>
+</head>
+
+<body>
+    <form>
+        <table>
+            <tr>
+                <td><label for="uname"></label>Username</td>
+                <td><input type="text" id="uname" pattern="^[a-zA-Z]+$" minlength="6" maxlength="10"
+                        placeholder="Enter Username" required></td>
+                <td id="err_uname"></td>
+            </tr>
+            <tr>
+                <td><label for="pass"></label>Password</td>
+                <!-- pattern="^(?=.*[0-9])(?=.*[#])[a-zA-Z].{8,16}$" -->
+                <td><input type="password" id="pass" minlength="8" placeholder="Enter Password" required></td>
+                <td id="err_pass"></td>
+            </tr>
+            <tr>
+                <td><button type="button" id="signup">SignUp</button></td>
+                <td><button type="button" id="login" style="float: right;">Login</button></td>
+            </tr>
+        </table>
+    </form>
+    <div id="msgs"></div>
+</body>
+
+</html>

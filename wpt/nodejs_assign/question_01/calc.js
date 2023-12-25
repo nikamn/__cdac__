@@ -29,4 +29,4 @@ sum = (a, b, ...c) => {
   return sum;
 };
 
-module.exports = { add, substract, multiply, divide, sum, square };
+export default { add, substract, multiply, divide, sum, square };

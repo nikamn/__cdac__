@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>JS Question 25</title>
+    <script src="../../jquery-3.7.1.min.js"></script>
+
+    <script>
+        let order;
+
+        const clearErrors = () => {
+            document.getElementById("err_oid").innerHTML = "";
+            document.getElementById("err_cname").innerHTML = "";
+            document.getElementById("err_bdate").innerHTML = "";
+            document.getElementById("err_sdate").innerHTML = "";
+            document.getElementById("err_total").innerHTML = "";
+        }
+
+        $(document).ready(function () {
+            $("#btn").click(function () {
+                clearErrors();
+
+                let oid = $("#oid").val();
+                let cname = $("#cname").val();
+                let bdate = $("#bdate").val();
+                let sdate = $("#sdate").val();
+                let total = $("#total").val();
+
+                let flag = true;
+
+                if (oid.length === 0) {
+                    $("#err_oid").html(`<span>Order Id cannot be empty</span>`).css("color", "red");
+                    flag = false;
+                }
+
+                if (cname.length === 0) {
+                    $("#err_cname").html(`<span>Customer Name cannot be empty</span>`).css("color", "red");
+                    flag = false;
+                }
+
+                if (bdate.length === 0) {
+                    $("#err_bdate").html(`<span>Billing Date cannot be empty</span>`).css("color", "red");
+                    flag = false;
+                }
+
+                if (sdate.length === 0) {
+                    $("#err_sdate").html(`<span>Shipping Date cannot be empty</span>`).css("color", "red");
+                    flag = false;
+                }
+
+                if (total.length === 0) {
+                    $("#err_total").html(`<span>Order Total cannot be empty</span>`).css("color", "red");
+                    flag = false;
+                }
+
+                if (cname.trim().length < 6) {
+                    $("#err_cname").html(`<span>Customer Name cannot be <6 characters</span>`).css("color", "red");
+                    flag = false;
+                }
+
+                oid = parseInt(oid);
+                if (oid < 1) {
+                    $("#err_oid").html(`<span>Order Id should be >0</span>`).css("color", "red");
+                    flag = false;
+                }
+
+                bdate = new Date(bdate);
+                sdate = new Date(sdate);
+
+                if (bdate > sdate) {
+                    $("#err_bdate").html(`<span>Billing date must be lesser than Shipping date</span>`).css("color", "red");
+                    $("#err_sdate").html(`<span>Shipping date must be higher than Billing date</span>`).css("color", "red");
+
+                    flag = false;
+                }
+
+                total = parseInt(total);
+                if (oid < 1) {
+                    $("#err_total").html(`<span>Order Total should be >0</span>`).css("color", "red");
+                    flag = false;
+                }
+
+                if (!flag) return;
+
+                order = {oid, cname, bdate, sdate, total};
+
+            });
+        });
+    </script>
+
+</head>
+
+<body>
+    <form>
+        <table>
+            <tr>
+                <td><label for="oid">Order Id : </label></td>
+                <td><input type="number" id="oid" min="1" required></td>
+                <td id="err_oid"></td>
+            </tr>
+            <tr>
+                <td><label for="cname">Customer Name : </label></td>
+                <td><input type="text" id="cname" pattern="^[a-zA-Z' ']+$" required></td>
+                <td id="err_cname"></td>
+            </tr>
+            <tr>
+                <td><label for="bdate">Enter Billing Date : </label></td>
+                <td><input type="date" id="bdate" required></td>
+                <td id="err_bdate"></td>
+            </tr>
+            <tr>
+                <td><label for="sdate">Enter Shipping Date : </label></td>
+                <td><input type="date" id="sdate" required></td>
+                <td id="err_sdate"></td>
+            </tr>
+            <tr>
+                <td><label for="total">Order Total : </label></td>
+                <td><input type="text" id="total" min="100" required></td>
+                <td id="err_total"></td>
+            </tr>
+            <tr>
+                <td></td>
+                <td><button type="button" id="btn">display</button></td>
+            </tr>
+        </table>
+    </form>
+</body>
+
+</html>
