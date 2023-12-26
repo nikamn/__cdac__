@@ -8,12 +8,12 @@
     <link rel="stylesheet" href="../../bootstrap.min.css">
     <script src="../../jquery-3.7.1.min.js"></script>
     <script src="../calc.js"></script>
+    <script src="./js/script.js"></script>
     <style>
         .my_container {
             display: flex;
             justify-content: center;
             align-items: center;
-            min-height: 100vh;
             font-size: smaller;
         }
     </style>
@@ -29,49 +29,51 @@
     </header>
 
     <main>
-        <div class="my_container">
+        <div class="my_container" style="min-height: 100vh;">
             <div role="tabpanel" class="row">
                 <!-- List group -->
-                <div class="list-group col-4" id="myList" role="tablist">
-                    <button class="list-group-item list-group-item-action active btn btn-outline-primary"
-                        data-bs-toggle="list" role="tab">Add</button>
-                    <button class="list-group-item list-group-item-action btn btn-outline-primary" data-bs-toggle="list"
-                        role="tab">Substract</button>
-                    <button class="list-group-item list-group-item-action btn btn-outline-primary" data-bs-toggle="list"
-                        role="tab">Multiply</button>
-                    <button class="list-group-item list-group-item-action btn btn-outline-primary" data-bs-toggle="list"
-                        role="tab">Divide</button>
-                    <button class="list-group-item list-group-item-action btn btn-outline-primary" data-bs-toggle="list"
-                        role="tab">Square</button>
-                    <button class="list-group-item list-group-item-action btn btn-outline-primary" data-bs-toggle="list"
-                        role="tab">Sum</button>
+                <div class="list-group col-4 text-center" id="funcs" role="tablist">
+                    <a class="list-group-item list-group-item-action active btn btn-outline-primary"
+                        data-bs-toggle="list" role="tab" href="#add">Add</a>
+                    <a class="list-group-item list-group-item-action btn btn-outline-primary" data-bs-toggle="list"
+                        role="tab" href="#sub">Substract</a>
+                    <a class="list-group-item list-group-item-action btn btn-outline-primary" data-bs-toggle="list"
+                        role="tab" href="#mult">Multiply</a>
+                    <a class="list-group-item list-group-item-action btn btn-outline-primary" data-bs-toggle="list"
+                        role="tab" href="#div">Divide</a>
+                    <a class="list-group-item list-group-item-action btn btn-outline-primary" data-bs-toggle="list"
+                        role="tab" href="#sq">Square</a>
+                    <a class="list-group-item list-group-item-action btn btn-outline-primary" data-bs-toggle="list"
+                        role="tab" href="#sum">Sum</a>
                 </div>
 
                 <!-- Tab panes -->
-                <div class="tab-content">
-                    <div class="tab-pane fade show active" role="tabpanel" id="list_add" aria-labelledby="add">
-                        <table class="table table-striped table-bordered table-hover">
-                            <tr>
-                                <td><label for="n1add">Number1</label></td>
-                                <td><input type="number" id="n1add"></td>
-                            </tr>
-                            <tr>
-                                <td><label for="n2add">Number2</label></td>
-                                <td><input type="number" id="n2add"></td>
-                            </tr>
-                            <tr>
-                                <td></td>
-                                <td class="text-center">
-                                    <button type="button" class="btn btn-success btn-sm" id="btn_add">Add</button>
-                                </td>
-                            </tr>
-                            <tr>
-                                <td>Result</td>
-                                <td><input type="number" disabled></td>
-                            </tr>
-                        </table>
+                <div class="tab-content list-group col-8 my_container">
+                    <div class="tab-pane fade show active" role="tabpanel" id="add" aria-labelledby="add">
+                        <form action="/add" method="post">
+                            <table class="table table-striped table-bordered table-hover">
+                                <tr>
+                                    <td><label for="n1add">Number1</label></td>
+                                    <td><input type="number" id="n1add"></td>
+                                </tr>
+                                <tr>
+                                    <td><label for="n2add">Number2</label></td>
+                                    <td><input type="number" id="n2add"></td>
+                                </tr>
+                                <tr>
+                                    <td></td>
+                                    <td class="text-center">
+                                        <button type="button" class="btn btn-success btn-sm" id="btn_add">Add</button>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>Result</td>
+                                    <td><input type="number" id="res_add" disabled></td>
+                                </tr>
+                            </table>
+                        </form>
                     </div>
-                    <div class="tab-pane fade" role="tabpanel" id="list_sub" aria-labelledby="sub">
+                    <div class="tab-pane fade" role="tabpanel" id="sub" aria-labelledby="sub">
                         <table class="table table-striped table-bordered table-hover">
                             <tr>
                                 <td><label for="n1sub">Number1</label></td>
@@ -89,11 +91,11 @@
                             </tr>
                             <tr>
                                 <td>Result</td>
-                                <td><input type="number" disabled></td>
+                                <td><input type="number" id="res_sub" disabled></td>
                             </tr>
                         </table>
                     </div>
-                    <div class="tab-pane fade" role="tabpanel" id="list_mult" aria-labelledby="mult">
+                    <div class="tab-pane fade" role="tabpanel" id="mult" aria-labelledby="mult">
                         <table class="table table-striped table-bordered table-hover">
                             <tr>
                                 <td><label for="n1mult">Number1</label></td>
@@ -111,11 +113,11 @@
                             </tr>
                             <tr>
                                 <td>Result</td>
-                                <td><input type="number" disabled></td>
+                                <td><input type="number" id="res_mult" disabled></td>
                             </tr>
                         </table>
                     </div>
-                    <div class="tab-pane fade" role="tabpanel" id="list_div" aria-labelledby="div">
+                    <div class="tab-pane fade" role="tabpanel" id="div" aria-labelledby="div">
                         <table class="table table-striped table-bordered table-hover">
                             <tr>
                                 <td><label for="n1div">Number1</label></td>
@@ -133,12 +135,50 @@
                             </tr>
                             <tr>
                                 <td>Result</td>
-                                <td><input type="number" disabled></td>
+                                <td><input type="number" id="res_div" disabled></td>
                             </tr>
                         </table>
                     </div>
-                    <div class="tab-pane" role="tabpanel" id="list_sq" aria-labelledby="sq"></div>
-                    <div class="tab-pane" role="tabpanel" id="list_sum" aria-labelledby="sum"></div>
+                    <div class="tab-pane fade" role="tabpanel" id="sq" aria-labelledby="sq">
+                        <table class="table table-striped table-bordered table-hover">
+                            <tr>
+                                <td><label for="nsq">Number</label></td>
+                                <td><input type="number" id="nsq"></td>
+                            </tr>
+                            <tr>
+                                <td></td>
+                                <td class="text-center">
+                                    <button type="button" class="btn btn-success btn-sm" id="btn_sq">Square</button>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>Result</td>
+                                <td><input type="number" id="res_sq" disabled></td>
+                            </tr>
+                        </table>
+                    </div>
+                    <div class="tab-pane" role="tabpanel" id="sum" aria-labelledby="sum">
+                        <table class="table table-striped table-bordered table-hover">
+                            <tr>
+                                <td><label for="nsum">Enter Number</label></td>
+                                <td><input type="number" id="nsum"></td>
+                            </tr>
+                            <tr>
+                                <td>Numbers Inputed</td>
+                                <td><textarea id="nisum" cols="21" rows="5" disabled></textarea></td>
+                            </tr>
+                            <tr>
+                                <td></td>
+                                <td class="text-center">
+                                    <button type="button" class="btn btn-success btn-sm" id="btn_sum">Sum</button>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>Result</td>
+                                <td><input type="number" id="res_sum" disabled></td>
+                            </tr>
+                        </table>
+                    </div>
                 </div>
             </div>
         </div>

@@ -1,4 +1,4 @@
-exports.factorial = (num) => {
+export function factorial(num) {
     var fact = 1;
     for(var i = 1; i <= num; i++){
         fact *= i;
@@ -6,7 +6,7 @@ exports.factorial = (num) => {
     return fact;
 }
 
-exports.myprime = (num) => {
+export function myprime(num) {
     var count = 0;
     for(var i=2; i <= Math.floor(Math.sqrt(num)); i++){
         if(num % i === 0){
@@ -20,7 +20,7 @@ exports.myprime = (num) => {
     return false;
 }
 
-exports.printable = (num) => {
+export function printable(num) {
     var arrNum = [];
     for(var i = 1; i <= 10; i++){
         arrNum.push(num * i);

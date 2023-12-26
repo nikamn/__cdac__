@@ -1,32 +1,31 @@
-add = (a, b) => {
+const add = (a, b) => {
   return a + b;
 };
 
-substract = (a, b) => {
+const substract = (a, b) => {
   return a - b;
 };
 
-multiply = (a, b) => {
+const multiply = (a, b) => {
   return a * b;
 };
 
-divide = (a, b) => {
+const divide = (a, b) => {
   return a / b;
 };
 
-square = (a) => {
+const square = (a) => {
   return a * a;
 };
 
-sum = (a, b, ...c) => {
+const sum = (...nums) => {
   let sum = 0;
-  sum += a + b;
 
-  c.forEach((element) => {
+  nums.forEach((element) => {
     sum += element;
   });
 
   return sum;
 };
 
-export default { add, substract, multiply, divide, sum, square };
+module.exports = { add, substract, multiply, divide, sum, square };

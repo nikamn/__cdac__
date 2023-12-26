@@ -1,12 +1,12 @@
-import { createServer } from "http";
-import fs from "fs";
-import { sum, substract, multiply, divide, square } from "./calc";
+const http = require("http");
+const fs = require("fs");
+const calc = require("./calc");
 
 fs.readFileSync("./public/index.html", (err, html) => {
   if (err) {
     throw err;
   } else {
-    const server = createServer((req, res) => {
+    const server = http.createServer((req, res) => {
         res.writeHead(200, {"Content-Type" : "text/html"});
         res.write(html);
         res.end();
@@ -14,7 +14,7 @@ fs.readFileSync("./public/index.html", (err, html) => {
     
     const PORT = 9090;
     server.listen(PORT, () => {
-        console.log(`server listening on ${PORT}`);
+        console.log(`server listening on port ${PORT}`);
     })
   }
 });
