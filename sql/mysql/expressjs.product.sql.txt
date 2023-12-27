@@ -1,0 +1,13 @@
+CREATE DATABASE IF NOT EXISTS `expressjs`;
+
+USE `expressjs`;
+
+SET @OLD_FOREIGN_KEY_CHECKS=@@FOREIGN_KEY_CHECKS, FOREIGN_KEY_CHECKS=0;
+
+CREATE TABLE IF NOT EXISTS `products` (
+	`pid` int NOT NULL auto_increment,
+	`pname` varchar(50) NOT NULL UNIQUE default '',
+	`qnty` int NOT NULL default '1',
+	`price` int NOT NULL default '1',
+	PRIMARY KEY (`pid`)
+) ENGINE=InnoDB CHARACTER SET utf8;

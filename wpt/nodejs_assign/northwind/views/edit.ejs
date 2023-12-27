@@ -1,50 +1,57 @@
 <!DOCTYPE html>
 <html lang="en">
-
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Edit Customer</title>
-</head>
+  </head>
 
-<body>
-    <h2 style="text-align: center; color: magenta;">Edit Customer</h2>
-    <form action="/customers" method="post"
-        style="display: flex; justify-content: center; align-items: center;">
-        <table style="border: 2px solid blueviolet; border-radius: 5px; padding: 20px;">
-            <tr>
-                <td><label for="id">CustomerID</label></td>
-                <td><input type="number" id="id"></td>
-            </tr>
-            <tr>
-                <td><label for="name">CustomerName</label></td>
-                <td><input type="text" id="name"></td>
-            </tr>
-            <tr>
-                <td><label for="ctname">ContactName</label></td>
-                <td><input type="text" id="ctname"></td>
-            </tr>
-            <tr>
-                <td><label for="addr">Address</label></td>
-                <td><input type="text" id="addr"></td>
-            </tr>
-            <tr>
-                <td><label for="city">City</label></td>
-                <td><input type="text" id="city"></td>
-            </tr>
-            <tr>
-                <td><label for="pcode">PostalCode</label></td>
-                <td><input type="number" id="pcode"></td>
-            </tr>
-            <tr>
-                <td><label for="country">Country</label></td>
-                <td><input type="text" id="country"></td>
-            </tr>
-            <tr style="text-align: center;">
-                <td colspan="2"><button type="submit" style="margin-top: 10px;">Add New Customer</button></td>
-            </tr>
-        </table>
+  <body>
+    <h2 style="text-align: center; color: magenta">Edit Customer</h2>
+    <form
+      action="/customers"
+      method="post"
+      style="display: flex; justify-content: center; align-items: center"
+    >
+      <table
+        style="border: 2px solid blueviolet; border-radius: 5px; padding: 20px"
+      >
+        <tr>
+          <td><label for="id">CustomerID</label></td>
+          <td><input type="number" id="id" /></td>
+        </tr>
+        <tr>
+          <td><label for="name">CustomerName</label></td>
+          <td><input type="text" id="name" /></td>
+        </tr>
+        <tr>
+          <td><label for="ctname">ContactName</label></td>
+          <td><input type="text" id="ctname" /></td>
+        </tr>
+        <tr>
+          <td><label for="addr">Address</label></td>
+          <td><input type="text" id="addr" /></td>
+        </tr>
+        <tr>
+          <td><label for="city">City</label></td>
+          <td><input type="text" id="city" /></td>
+        </tr>
+        <tr>
+          <td><label for="pcode">PostalCode</label></td>
+          <td><input type="number" id="pcode" /></td>
+        </tr>
+        <tr>
+          <td><label for="country">Country</label></td>
+          <td><input type="text" id="country" /></td>
+        </tr>
+        <tr style="text-align: center">
+          <td colspan="2">
+            <button type="submit" style="margin-top: 10px">
+              Add New Customer
+            </button>
+          </td>
+        </tr>
+      </table>
     </form>
-</body>
-
+  </body>
 </html>
