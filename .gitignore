@@ -31,3 +31,5 @@ replay_pid*
 
 Servers/
 target/
+
+node_modules/

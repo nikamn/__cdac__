@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Customers</title>
+</head>
+
+<body>
+    <header></header>
+    <main>
+        <a href="/customers/add">Add New Customer</a>
+        <table>
+            <thead>
+                <tr>
+                    <td>CustomerID</td>
+                    <td>CustomerName</td>
+                    <td>ContactName</td>
+                    <td>Address</td>
+                    <td>City</td>
+                    <td>PostalCode</td>
+                    <td>Country</td>
+                    <td>Actions</td>
+                </tr>
+            </thead>
+            <tbody>
+                <% for (let i=0; i < customers.length; i++) { %>
+                    <tr>
+                        <td>
+                            <%= customers[i].CustomerID %>
+                        </td>
+                        <td>
+                            <%= customers[i].CustomerName %>
+                        </td>
+                        <td>
+                            <%= customers[i].ContactName %>
+                        </td>
+                        <td>
+                            <%= customers[i].Address %>
+                        </td>
+                        <td>
+                            <%= customers[i].PostalCode %>
+                        </td>
+                        <td>
+                            <%= customers[i].Country %>
+                        </td>
+                        <td>
+                            <%= customers[i].Actions %>
+                        </td>
+                        <td><button type="button" style="background-color: aqua;">Edit</button><button type="button" style="background-color: red;">Delete</button></td>
+                    </tr>
+                    <% } %>
+            </tbody>
+        </table>
+    </main>
+    <footer></footer>
+</body>
+
+</html>

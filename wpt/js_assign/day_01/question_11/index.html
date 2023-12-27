@@ -25,7 +25,11 @@
             $("#btn").click(function () {
                 $("#day").val("");
                 const date = new Date($("#date").val());
-                $("#day").val(" " + weekdays[date.getDay()]);
+                if (date == "Invalid Date") {
+                    $("#day").val(" Please select valid date").css("color", "red");
+                } else {
+                    $("#day").val(" " + weekdays[date.getDay()]).css("color", "green");
+                }
             });
         });
     </script>

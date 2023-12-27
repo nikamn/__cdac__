@@ -19,6 +19,7 @@
     <script>
         let weekdays = ["Sunday", "Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday"];
         $(document).ready(function () {
+
             $("#btn").click(function () {
                 const now = new Date();
 
@@ -26,8 +27,16 @@
 
                 $("#day").val(weekdays[now.getDay()]);
                 $("#date").val(`${now.getDate()}-${now.getMonth() + 1}-${now.getFullYear()}`);
-                $("#time").val(`${now.getHours()}h : ${now.getMinutes().toString().padStart(2, '0')}m : ` +
-                    `${now.getSeconds().toString().padStart(2, '0')}s : ${now.getMilliseconds().toString().padStart(3, '0')}ms`);
+
+
+                setInterval(function () {
+                    const now = new Date();
+                    $("#time").val(`${now.getHours()}h : ${now.getMinutes().toString().padStart(2, '0')}m : ` +
+                        `${now.getSeconds().toString().padStart(2, '0')}s : ${now.getMilliseconds().toString().padStart(3, '0')}ms`);
+                }, 1000);
+
+                // $("#time").val(`${now.getHours()}h : ${now.getMinutes().toString().padStart(2, '0')}m : ` +
+                //     `${now.getSeconds().toString().padStart(2, '0')}s : ${now.getMilliseconds().toString().padStart(3, '0')}ms`);
 
                 let next_jan1 = new Date();
                 next_jan1.setFullYear(now.getFullYear() + 1, 0, 1);
@@ -44,8 +53,8 @@
                     $("#greeting").html("You woke up...! Have a nice day ...!");
                 } else if (hours >= 7 && hours <= 9) {
                     $("#greeting").html("Take a Breakfast ...!");
-                } else if (hours == 10 || hours ==11) {
-                    $("#greeting").html("Good Morning ...!");       
+                } else if (hours == 10 || hours == 11) {
+                    $("#greeting").html("Good Morning ...!");
                 } else if (hours == 12 || hours == 13) {
                     $("#greeting").html("Take a lunch ...!");
                 } else if (hours == 14 || hours == 15) {
@@ -53,9 +62,11 @@
                 } else if (hours >= 16 && hours < 19) {
                     $("#greeting").html("Good Evening ...!");
                 } else if (hours >= 19 && hours < 22) {
-                    $("#greeting").html("Dinner Time ...!");  
-                } 
+                    $("#greeting").html("Dinner Time ...!");
+                }
             });
+
+
         });
     </script>
 </head>
@@ -67,52 +78,52 @@
                 <a class="navbar-brand" href="#">Current DateTime Details</a>
             </div>
         </nav>
-        </header>
-        <main style="margin-top: 230px;">
-            <section class="container-fluid">
-                <table class="table table-bordered table-hover" style="margin: 0 auto; width: 50%;">
-                    <tr>
-                        <td colspan="2" class="table-danger">
-                            <h3 style="color: chocolate;">DateTime Details</h3>
-                        </td>
-                    </tr>
-                    <tr>
-                        <td style="width: 30%;" class="table-success"><label for="day">Current Day</label></td>
-                        <td style="width: 30%;" class="table-info"><input type="text" id="day" readonly></td>
-                    </tr>
-                    <tr>
-                        <td class="table-info"><label for="date">Current Date</label></td>
-                        <td class="table-success"><input type="text" id="date" readonly></td>
-                    </tr>
-                    <tr>
-                        <td class="table-success"><label for="time">Current Time</label></td>
-                        <td class="table-info"><input type="text" id="time" readonly></td>
-                    </tr>
-                    <tr>
-                        <td class="table-info"><label for="days_left">Days Until New Year</label></td>
-                        <td class="table-success"><input type="text" id="days_left" readonly></td>
-                    </tr>
-                    <tr>
-                        <td colspan="2" class="table-warning">
-                            <h3 style="color: blueviolet;" id="greeting">Welcome ...!</h3>
-                        </td>
-                    </tr>
-                    <tr>
-                        <td colspan="2" class="table-danger"><button type="button" id="btn" class="btn btn-primary">Get
-                                Current Info</button>
-                        </td>
-                    </tr>
-                </table>
-            </section>
-        </main>
-        <footer class="bg-body-tertiary text-center text-lg-start"
-            style="position: fixed; bottom: 0; width: 100%; background-color: cornflowerblue !important;">
-            <div class="text-center p-3" style="background-color: rgba(0, 0, 0, 0.05);">
-                © 2023 Copyright:
-                <a class="text-body" href="https://mdbootstrap.com/">nikamn.in</a>
-            </div>
-        </footer>
-        <script src="../../bootstrap.bundle.min.js"></script>
+    </header>
+    <main style="margin-top: 230px;">
+        <section class="container-fluid">
+            <table class="table table-bordered table-hover" style="margin: 0 auto; width: 50%;">
+                <tr>
+                    <td colspan="2" class="table-danger">
+                        <h3 style="color: chocolate;">DateTime Details</h3>
+                    </td>
+                </tr>
+                <tr>
+                    <td style="width: 30%;" class="table-success"><label for="day">Current Day</label></td>
+                    <td style="width: 30%;" class="table-info"><input type="text" id="day" readonly></td>
+                </tr>
+                <tr>
+                    <td class="table-info"><label for="date">Current Date</label></td>
+                    <td class="table-success"><input type="text" id="date" readonly></td>
+                </tr>
+                <tr>
+                    <td class="table-success"><label for="time">Current Time</label></td>
+                    <td class="table-info"><input type="text" id="time" readonly></td>
+                </tr>
+                <tr>
+                    <td class="table-info"><label for="days_left">Days Until New Year</label></td>
+                    <td class="table-success"><input type="text" id="days_left" readonly></td>
+                </tr>
+                <tr>
+                    <td colspan="2" class="table-warning">
+                        <h3 style="color: blueviolet;" id="greeting">Welcome ...!</h3>
+                    </td>
+                </tr>
+                <tr>
+                    <td colspan="2" class="table-danger"><button type="button" id="btn" class="btn btn-primary">Get
+                            Current Info</button>
+                    </td>
+                </tr>
+            </table>
+        </section>
+    </main>
+    <footer class="bg-body-tertiary text-center text-lg-start"
+        style="position: fixed; bottom: 0; width: 100%; background-color: cornflowerblue !important;">
+        <div class="text-center p-3" style="background-color: rgba(0, 0, 0, 0.05);">
+            © 2023 Copyright:
+            <a class="text-body" href="https://mdbootstrap.com/">nikamn.in</a>
+        </div>
+    </footer>
+    <script src="../../bootstrap.bundle.min.js"></script>
 </body>
 
 </html>

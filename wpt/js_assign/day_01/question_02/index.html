@@ -1,35 +1,39 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Question 2</title>
-    <script src="../../jquery-3.7.1.min.js"></script>
-    <script>
-      $(document).ready(function () {
-        $("#btn").click(function () {
-          let num = $("#num").val();
-          let msg = $("#msg").val();
 
-          let res = "";
-          for (let i = 0; i < num; i++) {
-            res += msg + "<br/>";
-          }
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Question 2</title>
+  <script src="../../jquery-3.7.1.min.js"></script>
+  <script>
+    $(document).ready(function () {
+      $("#btn").click(function () {
+        let num = $("#num").val();
+        let msg = $("#msg").val();
 
-          $("#res").html(res).css({ color: "magenta", marginTop: "10px" });
-        });
+        let res = "";
+        for (let i = 0; i < num; i++) {
+          res += msg + "<br/>";
+        }
+
+        $("#res").html(res).css({ color: "magenta", marginTop: "10px" });
       });
-    </script>
-  </head>
-  <body>
-    <div>
-      <label for="num">Number</label>
-      <input type="number" id="num" />
-      <label for="msg">Message</label>
-      <input type="text" id="msg" />
-      <button type="button" id="btn">Print Messages</button>
-    </div>
+    });
+  </script>
+</head>
 
-    <div id="res"></div>
-  </body>
+<body>
+  <h4>2. Accept an integer value and a message from user and print the message that many number oftimes.</h4>
+  <div>
+    <label for="num">Number</label>
+    <input type="number" id="num" />
+    <label for="msg">Message</label>
+    <input type="text" id="msg" />
+    <button type="button" id="btn">Print Messages</button>
+  </div>
+
+  <div id="res"></div>
+</body>
+
 </html>

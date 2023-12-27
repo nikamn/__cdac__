@@ -33,7 +33,7 @@
 
         //let res = Math.pow(x, y);
         let res;
-        
+
         if (y === 0 || x === 1) {
           res = 1;
         } else {
@@ -41,7 +41,7 @@
           else {
             res = 1;
             for (let i = 1; i <= y; i++) {
-              res *= x; 
+              res *= x;
             }
           }
         }
@@ -53,11 +53,12 @@
 </head>
 
 <body>
+  <h4>8. Write a function pow(x,y) that calculates x^y. Do not use the Math predefined objet</h4>
   <div>
     <label for="x">X: </label>
-    <input type="number" id="x">
+    <input type="number" id="x" placeholder=" x">
     <label for="y">Y: </label>
-    <input type="number" id="y">
+    <input type="number" id="y" placeholder=" y">
     <button type="button" id="btn">Calculate</button>
   </div>
   <p id="msg" style="color: crimson;"></p>

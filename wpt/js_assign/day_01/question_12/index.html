@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Question 12</title>
+    <script src="../../jquery-3.7.1.min.js"></script>
+
+    <script>
+        let employees = [];
+
+        $(document).ready(function () {
+            $("#btn").click(function() {
+                $("#err_e1").html("");
+                $("#err_e2").html("");
+                $("#err_e3").html("");
+                $("#err_e4").html("");
+                $("#err_e5").html("");
+                $("#err_e6").html("");
+
+                let e1 = $("#emp1").val();
+                let e2 = $("#emp2").val();
+                let e3 = $("#emp3").val();
+                let e4 = $("#emp4").val();
+                let e5 = $("#emp5").val();
+                let e6 = $("#emp6").val();
+
+                let flag = true;
+
+                if(e1.length == 0) {
+                    $("#err_e1").html("Employee 1 cannot be empty").css("color", "red");
+                    flag = false;
+                }
+
+                if(e2.length === 0) {
+                    $("#err_e2").html(`Employee 2 cannot be empty`).css("color", "red");
+                    flag = false;
+                }
+
+                if(e3.length === 0) {
+                    $("#err_e3").html(`Employee 3 cannot be empty`).css("color", "red");
+                    flag = false;
+                }
+
+                if(e4.length === 0) {
+                    $("#err_e4").html(`Employee 4 cannot be empty`).css("color", "red");
+                    flag = false;
+                }
+
+                if(e5.length === 0) {
+                    $("#err_e5").html(`Employee 5 cannot be empty`).css("color", "red");
+                    flag = false;
+                }
+
+                if(e6.length === 0) {
+                    $("#err_e6").html(`Employee 6 cannot be empty`).css("color", "red");
+                    flag = false;
+                }
+
+                if (!flag) return;
+
+                
+            });
+        });
+    </script>
+
+</head>
+
+<body>
+    <!-- <script>
+        var empl = [];
+        for(var i=0; i < 6; i++){
+            empl.push(prompt("Enter 6 Employees"));
+        }
+        empl.sort();
+        document.write(empl.toString());
+    </script> -->
+    <h4>12. Accept and store names of 6 employees into array and display in sorted order of names.</h4>
+    <div>
+        <label for="emp1">Employee 1: </label>
+        <input type="text" id="emp1">
+        <span id="err_e1"></span>
+        <br><br>
+        <label for="emp2">Employee 2: </label>
+        <input type="text" id="emp2">
+        <span id="err_e2"></span>
+        <br><br>
+        <label for="emp3">Employee 3: </label>
+        <input type="text" id="emp3">
+        <span id="err_e3"></span>
+        <br><br>
+        <label for="emp4">Employee 4: </label>
+        <input type="text" id="emp4">
+        <span id="err_e4"></span>
+        <br><br>
+        <label for="emp5">Employee 5: </label>
+        <input type="text" id="emp5">
+        <span id="err_e5"></span>
+        <br><br>
+        <label for="emp6">Employee 6: </label>
+        <input type="text" id="emp6">
+        <span id="err_e6"></span>
+        <br>
+        <br>
+        <button type="button" id="btn">Sort</button>
+    </div>
+
+</body>
+
+</html>
