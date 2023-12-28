@@ -2,6 +2,10 @@ const express = require("express");
 const router = express.Router();
 const conn = require("../db/dbconfig");
 
+router.get("/", (req, res) => {
+  res.send("Hello World!");
+});
+
 router.get("/customers", (req, res) => {
   conn.query("SELECT * FROM customers", (err, results, fields) => {
     if (err) {
@@ -18,17 +22,11 @@ router.get("/customers/add", (req, res) => {
 });
 
 router.post("/customers", (req, res) => {
-  let {
-    CustomerName,
-    ContactName,
-    Address,
-    City,
-    PostalCode,
-    Country,
-  } = req.body;
+  let { CustomerName, ContactName, Address, City, PostalCode, Country } =
+    req.body;
 
   console.log(req.body.CustomerName);
-  
+
   conn.query(
     "INSERT INTO customers VALUES (default, ?,?,?,?,?,?)",
     [CustomerName, ContactName, Address, City, PostalCode, Country],

@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="../../bootstrap/css/bootstrap.min.css">
+    <script src="../../bootstrap/js/bootstrap.min.js"></script>
+    <script src="script.js"></script>
+    <title>String Manipulation</title>
+</head>
+<body>
+    <div class="container p-5">
+        <div class="row mb-3">
+            <label for="org-string" class="col-md-2 align-self-end">Enter String : </label>
+            <input type="text" name="org-string" id="org-string" class="col-md-3 form-control" placeholder="enter original string">
+        </div>
+        <div class="row mb-3">
+            <label for="sub-string" class="col-md-2 align-self-end">Enter Sub String : </label>
+            <input type="text" name="sub-string" id="sub-string" class="col-md-3 form-control" placeholder="enter sub string">
+        </div>
+        <div class="row mb-3">
+            <label for="replace-string" class="col-md-2 align-self-end">Replace with String : </label>
+            <input type="text" name="replace-string" id="replace-string" class="col-md-3 form-control" placeholder="enter replace string">
+        </div>
+        <div class="row">
+            <div class="col-md-4 input-group">
+                <input type="radio" name="str-mani" id="search" class="form-check align-self-center">&nbsp;&nbsp;
+                <label for="search" class="align-self-center">Search substring in main string</label>
+            </div>
+            <div class="col-md-2 input-group">
+                <input type="radio" name="str-mani" id="upper" class="form-check align-self-center">&nbsp;&nbsp;
+                <label for="upper" class="align-self-center">To Upper Case</label>
+            </div>
+            <div class="col-md-2 input-group">
+                <input type="radio" name="str-mani" id="lower" class="form-check align-self-center">&nbsp;&nbsp;
+                <label for="lower" class="align-self-center">To Lower Case</label>
+            </div>
+            <div class="col-md-2 input-group">
+                <input type="radio" name="str-mani" id="trim" class="form-check align-self-center">&nbsp;&nbsp;
+                <label for="trim" class="align-self-center">Trim spaces</label>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-md-4 input-group">
+                <input type="radio" name="str-mani" id="concat" class="form-check align-self-center">&nbsp;&nbsp;
+                <label for="concat" class="align-self-center">Concatenate</label>
+            </div>
+            <div class="col-md-2 input-group">
+                <input type="radio" name="str-mani" id="replace" class="form-check align-self-center">&nbsp;&nbsp;
+                <label for="replace" class="align-self-center">replace</label>
+            </div>
+        </div>
+        <div class="row">
+            <button type="button" class="btn btn-primary mt-4" onclick="manipulateString()">Submit Query</button>
+        </div>
+        <div class="row mt-4">
+            <p class="col-md-1 font-weight-bold">Result : </p>
+            <p class="col-md-2" id="result"></p>
+        </div>
+    </div>
+</body>
+</html>

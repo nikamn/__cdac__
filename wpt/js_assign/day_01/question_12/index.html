@@ -8,16 +8,18 @@
     <script src="../../jquery-3.7.1.min.js"></script>
 
     <script>
-        let employees = [];
 
         $(document).ready(function () {
-            $("#btn").click(function() {
+            $("#btn").click(function () {
+                let employees = [];
+
                 $("#err_e1").html("");
                 $("#err_e2").html("");
                 $("#err_e3").html("");
                 $("#err_e4").html("");
                 $("#err_e5").html("");
                 $("#err_e6").html("");
+                $("#sort").html("");
 
                 let e1 = $("#emp1").val();
                 let e2 = $("#emp2").val();
@@ -28,39 +30,48 @@
 
                 let flag = true;
 
-                if(e1.length == 0) {
+                if (e1.length == 0) {
                     $("#err_e1").html("Employee 1 cannot be empty").css("color", "red");
                     flag = false;
                 }
 
-                if(e2.length === 0) {
+                if (e2.length === 0) {
                     $("#err_e2").html(`Employee 2 cannot be empty`).css("color", "red");
                     flag = false;
                 }
 
-                if(e3.length === 0) {
+                if (e3.length === 0) {
                     $("#err_e3").html(`Employee 3 cannot be empty`).css("color", "red");
                     flag = false;
                 }
 
-                if(e4.length === 0) {
+                if (e4.length === 0) {
                     $("#err_e4").html(`Employee 4 cannot be empty`).css("color", "red");
                     flag = false;
                 }
 
-                if(e5.length === 0) {
+                if (e5.length === 0) {
                     $("#err_e5").html(`Employee 5 cannot be empty`).css("color", "red");
                     flag = false;
                 }
 
-                if(e6.length === 0) {
+                if (e6.length === 0) {
                     $("#err_e6").html(`Employee 6 cannot be empty`).css("color", "red");
                     flag = false;
                 }
 
                 if (!flag) return;
 
-                
+                employees.push(e1);
+                employees.push(e2);
+                employees.push(e3);
+                employees.push(e4);
+                employees.push(e5);
+                employees.push(e6);
+
+                employees.sort();
+
+                $("#sort").html(employees.toString());
             });
         });
     </script>
@@ -104,6 +115,9 @@
         <br>
         <br>
         <button type="button" id="btn">Sort</button>
+        <br>
+        <br>
+        <textarea id="sort" cols="33" rows="10" readonly></textarea>
     </div>
 
 </body>

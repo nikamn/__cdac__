@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Question 13</title>
+    <script src="../../jquery-3.7.1.min.js"></script>
+    <link rel="stylesheet" href="../../bootstrap.min.css">
+    <script>
+        let employees = [
+            { id: 1, name: 'John', salary: 40000 },
+            { id: 2, name: 'Jane', salary: 80000 },
+            { id: 3, name: 'Alice', salary: 65000 },
+            { id: 4, name: 'Bob', salary: 59000 }
+        ];
+
+        $(window).on("load", function () {
+            // $("#tbody").append(employees.map(e => (
+            //     `<tr>
+            //     <td>${e.id}</td>
+            //     <td>${e.name}</td>
+            //     <td>${e.salary}</td>    
+            //     </tr>`
+            // )));
+
+            employees.forEach(e => $("#tbody").append(
+                `<tr>
+                <td>${e.id}</td>
+                <td>${e.name}</td>
+                <td>${e.salary}</td>    
+                </tr>`
+            ));
+        });
+
+
+    </script>
+</head>
+
+<body>
+    <div class="container">
+        <table class="table table-bordered table-hover mt-5 text-center">
+            <thead class="table-primary">
+                <tr>
+                    <th>Employee Id</th>
+                    <th>Employee Name</th>
+                    <th>Employee Salary</th>
+                </tr>
+            </thead>
+            <tbody id="tbody"></tbody>
+        </table>
+    </div>
+
+    <script src="../../bootstrap.bundle.min.js"></script>
+</body>
+
+</html>
