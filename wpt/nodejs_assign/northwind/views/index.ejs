@@ -5,7 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Customers</title>
     <!-- <link rel="stylesheet" type="text/css" href="css/bootstrap.min.css" /> -->
-    <link rel="stylesheet" href="../node_modules/bootstrap/dist/css/bootstrap.css">
+    <link rel="stylesheet" href="/css/bootstrap.css" />
   </head>
 
   <body>
@@ -13,16 +13,16 @@
     <main>
       <a href="/customers/add">Add New Customer</a>
       <table class="table table-bordered table-striped table-hover">
-        <thead>
+        <thead class="table-primary">
           <tr>
-            <td>CustomerID</td>
-            <td>CustomerName</td>
-            <td>ContactName</td>
-            <td>Address</td>
-            <td>City</td>
-            <td>PostalCode</td>
-            <td>Country</td>
-            <td>Actions</td>
+            <th>CustomerID</th>
+            <th>CustomerName</th>
+            <th>ContactName</th>
+            <th>Address</th>
+            <th>City</th>
+            <th>PostalCode</th>
+            <th>Country</th>
+            <th>Actions</th>
           </tr>
         </thead>
         <tbody>
@@ -36,10 +36,8 @@
             <td><%= customers[i].Country %></td>
             <td><%= customers[i].Actions %></td>
             <td>
-              <button type="button" style="background-color: aqua">Edit</button
-              ><button type="button" style="background-color: red">
-                Delete
-              </button>
+              <button type="button" class="btn btn-info mx-1">Edit</button
+              ><button type="button" class="btn btn-danger mx-1">Delete</button>
             </td>
           </tr>
           <% } %>
