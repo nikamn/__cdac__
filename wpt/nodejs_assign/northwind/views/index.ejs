@@ -1,54 +1,72 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Customers</title>
-    <!-- <link rel="stylesheet" type="text/css" href="css/bootstrap.min.css" /> -->
-    <link rel="stylesheet" href="../node_modules/bootstrap/dist/css/bootstrap.css">
-  </head>
 
-  <body>
-    <header></header>
-    <main>
-      <a href="/customers/add">Add New Customer</a>
-      <table class="table table-bordered table-striped table-hover">
-        <thead>
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Customers</title>
+  <link rel="stylesheet" href="/css/bootstrap.css">
+</head>
+
+<body>
+  <header></header>
+  <main>
+    <button class="btn btn-primary mb-2">
+      <a href="/customers/add" class="text-decoration-none text-white">Add New</a>
+    </button>
+    <table class="table table-bordered table-striped table-hover w-80">
+      <thead class="table-primary">
+        <tr>
+          <th>CustomerID</th>
+          <th>CustomerName</th>
+          <th>ContactName</th>
+          <th>Address</th>
+          <th>City</th>
+          <th>PostalCode</th>
+          <th>Country</th>
+          <th>Actions</th>
+        </tr>
+      </thead>
+      <tbody>
+        <% for (let i=0; i < customers.length; i++) { %>
           <tr>
-            <td>CustomerID</td>
-            <td>CustomerName</td>
-            <td>ContactName</td>
-            <td>Address</td>
-            <td>City</td>
-            <td>PostalCode</td>
-            <td>Country</td>
-            <td>Actions</td>
-          </tr>
-        </thead>
-        <tbody>
-          <% for (let i=0; i < customers.length; i++) { %>
-          <tr>
-            <td><%= customers[i].CustomerID %></td>
-            <td><%= customers[i].CustomerName %></td>
-            <td><%= customers[i].ContactName %></td>
-            <td><%= customers[i].Address %></td>
-            <td><%= customers[i].PostalCode %></td>
-            <td><%= customers[i].Country %></td>
-            <td><%= customers[i].Actions %></td>
             <td>
-              <button type="button" style="background-color: aqua">Edit</button
-              ><button type="button" style="background-color: red">
-                Delete
+              <%= customers[i].CustomerID %>
+            </td>
+            <td>
+              <%= customers[i].CustomerName %>
+            </td>
+            <td>
+              <%= customers[i].ContactName %>
+            </td>
+            <td>
+              <%= customers[i].Address %>
+            </td>
+            <td>
+              <%= customers[i].PostalCode %>
+            </td>
+            <td>
+              <%= customers[i].Country %>
+            </td>
+            <td>
+              <%= customers[i].Actions %>
+            </td>
+            <td>
+              <button type="button" class="btn btn-outline-info mx-1">
+                <a href="/edit/<%= customers[i].CustomerID %>" class="text-decoration-none text-dark">Edit</a>
+              </button>
+              <button type="button" class="btn btn-outline-danger mx-1">
+                <a href="/delete/<%= customers[i].CustomerID %>" class="text-decoration-none text-dark">Delete</a>
               </button>
             </td>
           </tr>
           <% } %>
-        </tbody>
-      </table>
+      </tbody>
+    </table>
     </section>
   </main>
 
-  <footer class="bg-body-tertiary text-center text-lg-start" style="position: fixed; bottom: 0; width: 100%;">
+  <footer class="bg-body-tertiary text-center text-lg-start" style="position: relative; bottom: 0; width: 100%;">
     <div class="text-center p-3" style="background-color: rgba(0, 0, 0, 0.05);">
       © 2023 Copyright:
       <a class="text-body" href="https://nikamn.in/">nikamn.in</a>
