@@ -9,12 +9,29 @@
 </head>
 
 <body>
-  <header></header>
+  <header class="p-3 mb-3 border-bottom">
+    <div class="container">
+      <div class="d-flex flex-wrap align-items-center justify-content-center justify-content-lg-start">
+        <a href="/customers" class="d-flex align-items-center mb-3 mb-md-0 me-md-auto text-dark text-decoration-none">
+          <svg class="bi me-2" width="40" height="32"><use xlink:href="#bootstrap"></use></svg>
+          <span class="fs-4">Northwind</span>
+        </a>
+
+        <ul class="nav col-12 col-lg-auto me-lg-auto mb-2 justify-content-center mb-md-0">
+          <li>
+            <a href="/customers/add" class="nav-link px-2 link-secondary">Add New</a>
+          </li>
+          <li><a href="#" class="nav-link px-2 link-secondary">Overview</a></li>
+          <li><a href="#" class="nav-link px-2 link-dark">Inventory</a></li>
+          <li><a href="#" class="nav-link px-2 link-dark">Customers</a></li>
+          <li><a href="#" class="nav-link px-2 link-dark">Products</a></li>
+        </ul>
+      </div>
+    </div>
+  </header>
+
   <main>
-    <button class="btn btn-primary mb-2">
-      <a href="/customers/add" class="text-decoration-none text-white">Add New</a>
-    </button>
-    <table class="table table-bordered table-striped table-hover w-80">
+    <table class="table table-bordered table-striped table-hover" style="width: 80%; text-align: center; margin: 20px auto;">
       <thead class="table-primary">
         <tr>
           <th>CustomerID</th>
@@ -43,20 +60,20 @@
               <%= customers[i].Address %>
             </td>
             <td>
+              <%= customers[i].City %>
+            </td>
+            <td>
               <%= customers[i].PostalCode %>
             </td>
             <td>
               <%= customers[i].Country %>
             </td>
             <td>
-              <%= customers[i].Actions %>
-            </td>
-            <td>
               <button type="button" class="btn btn-outline-info mx-1">
-                <a href="/edit/<%= customers[i].CustomerID %>" class="text-decoration-none text-dark">Edit</a>
+                <a href="/customers/edit/<%= customers[i].CustomerID %>" class="text-decoration-none text-dark">Edit</a>
               </button>
               <button type="button" class="btn btn-outline-danger mx-1">
-                <a href="/delete/<%= customers[i].CustomerID %>" class="text-decoration-none text-dark">Delete</a>
+                <a href="/customers/delete/<%= customers[i].CustomerID %>" class="text-decoration-none text-dark">Delete</a>
               </button>
             </td>
           </tr>

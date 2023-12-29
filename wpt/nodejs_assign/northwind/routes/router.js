@@ -30,7 +30,7 @@ router.post("/customers", (req, res) => {
   let { CustomerName, ContactName, Address, City, PostalCode, Country } =
     req.body;
 
-  console.log(req.body.CustomerName);
+  console.log(req.body);
 
   conn.query(
     "INSERT INTO customers VALUES (default, ?,?,?,?,?,?)",
@@ -48,27 +48,57 @@ router.post("/customers", (req, res) => {
 
 // GET /customers/edit/:id
 router.get("/customers/edit/:id", (req, res) => {
-  connection.query(
+  let { id } = req.params;
+  //console.log(id);
+
+  conn.query(
     "SELECT * FROM customers WHERE CustomerId=?",
-    [req.params.id],
-    function (err, result, fields) {
+    id,
+    (err, result, fields) => {
       if (err) {
-        console.log(err);
+        console.log("err occurred in GET /customers/edit/:id : ", err);
         res.status(500).send("<h3>no data found</h3>");
       } else {
         console.log(result);
-        res.status(200).send(result[0]);
+        res.render("edit", { customer: result[0] });
       }
     }
   );
-
-  res.render("edit");
 });
 
+// POST /customers/edit/:id
+router.post("/customers/edit/:id", (req, res) => {
+  let {
+    CustomerID,
+    CustomerName,
+    ContactName,
+    Address,
+    City,
+    PostalCode,
+    Country,
+  } = req.body;
 
-// DELETE /customers/delete/:id
-router.delete("/customers/delete/:id", (req, res) => {
+  console.log(req.body);
+
+  conn.query(
+    "UPDATE customers SET CustomerName=?, ContactName=?, Address=?, City=?, PostalCode=?, Country=? WHERE CustomerID=?",
+    [CustomerName, ContactName, Address, City, PostalCode, Country, CustomerID],
+    (err, result, fields) => {
+      if (err) {
+        console.log("err occurred in POST /customers/edit/:id : ", err);
+        res.status(500).send("<h3>no data found</h3>");
+      } else {
+        console.log(result);
+        res.redirect("/customers");
+      }
+    }
+  );
+});
+
+// GET /customers/delete/:id
+router.get("/customers/delete/:id", (req, res) => {
   let { id } = req.params;
+  console.log(id);
 
   conn.query(
     "DELETE FROM customers WHERE CustomerId = ?",
