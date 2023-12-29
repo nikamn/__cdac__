@@ -17,6 +17,9 @@ router.get("/customers", (req, res) => {
       console.log(`error occured during GET /customers query: `, err);
       return res.status(500).json("No Data Found @...!");
     } else {
+      if (results.length === 0) {
+        return res.status(200).json("No data is present in customers @...!");
+      }
       return res.status(200).json(results);
     }
   });
@@ -53,7 +56,9 @@ router.get("/customers/:id", (req, res) => {
         console.log("err occureed in GET /customers/:id -> ", err);
         return res.status(500).json("No Data Found @...!");
       } else {
-        console.log(results);
+        if (results.length === 0) {
+          return res.status(200).json(`No customer with id: ${req.params.id} is present in customers @...!`);
+        }
         res.status(200).json(results[0]);
       }
     }
@@ -66,7 +71,7 @@ router.put("/customers/edit/:id", (req, res) => {
     req.body;
 
   conn.query(
-    "UPDATE customers SET CustomerName=?,ContantName=?,Address=?,City=?,PostalCode=?,Country=? WHERE CustomerId=?",
+    "UPDATE customers SET CustomerName=?,ContactName=?,Address=?,City=?,PostalCode=?,Country=? WHERE CustomerId=?",
     [
       CustomerName,
       ContactName,
@@ -81,6 +86,9 @@ router.put("/customers/edit/:id", (req, res) => {
         console.log("err occurred in PUT /customers/edit/:id : ", err);
         return res.status(500).json("No Data Found @...!");
       } else {
+        if (results.affectedRows === 0) {
+          return res.status(200).json(`No customer with id: ${req.params.id} is present in customers @...!`);
+        }
         return res.status(200).json("Data Updated Successfully @...!");
       }
     }
@@ -97,6 +105,9 @@ router.delete("/customers/delete/:id", (req, res) => {
         console.log("err occurred in DELETE /customers/delete/:id : ", err);
         return res.status(500).json("No Data Found @...!");
       } else {
+        if (results.affectedRows === 0) {
+          return res.status(200).json(`No customer with id: ${req.params.id} is present in customers @...!`);
+        }
         return res.status(200).json("Data Deleted Successfully @...!");
       }
     }

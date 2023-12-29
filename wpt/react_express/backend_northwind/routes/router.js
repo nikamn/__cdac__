@@ -8,7 +8,6 @@ router.get("/", (req, res) => {
 });
 
 // GET /about
-
 router.get("/about", (req, res) => {
   res.status(200).send("about");
 });
@@ -20,13 +19,12 @@ router.get("/api/customers", (req, res) => {
       console.log(`error occured during GET /customers query: `, err);
       res.status(500).send("No Data Found @...!");
     } else {
-      //console.log(results);
       res.status(200).send(results);
     }
   });
 });
 
-// GET /customers/:id
+// GET /api/customers/:id
 router.get("/api/customers/:id", (req, res) => {
   conn.query(
     "SELECT * FROM customers WHERE CustomerID=?",
@@ -43,7 +41,7 @@ router.get("/api/customers/:id", (req, res) => {
   );
 });
 
-// POST /customers
+// POST /api/customers
 router.post("/api/customers", (req, res) => {
   let { CustomerName, ContactName, Address, City, PostalCode, Country } =
     req.body;
@@ -65,7 +63,7 @@ router.post("/api/customers", (req, res) => {
   );
 });
 
-// PUT /customers/edit/:id
+// PUT /api/customers/edit/:id
 router.put("/api/customers/edit/:id", (req, res) => {
   let {
     CustomerName,
@@ -93,7 +91,7 @@ router.put("/api/customers/edit/:id", (req, res) => {
   );
 });
 
-// DELETE /customers/delete/:id
+// DELETE /api/customers/delete/:id
 router.delete("/api/customers/delete/:id", (req, res) => {
   let { id } = req.params;
   console.log(id);
