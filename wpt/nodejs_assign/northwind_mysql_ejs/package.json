@@ -1,5 +1,5 @@
 {
-  "name": "northwind",
+  "name": "northwind_mysql_ejs",
   "version": "1.0.0",
   "description": "Express.js CRUD demo with northwind database",
   "main": "app.js",
