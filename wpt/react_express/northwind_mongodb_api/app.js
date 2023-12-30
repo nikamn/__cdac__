@@ -5,12 +5,6 @@ const bodyParser = require("body-parser");
 const routes = require("./routes/router");
 const { default: mongoose } = require("mongoose");
 
-// configuartion
-app.set("views", path.join(__dirname, "views"));
-app.set("view engine", "ejs");
-
-app.use(express.static(path.join(__dirname, "node_modules/bootstrap/dist/")));
-
 // middlewares
 app.use(bodyParser.urlencoded({ extended: false }));
 app.use(bodyParser.json());
@@ -19,11 +13,15 @@ app.use(bodyParser.json());
 app.use("/", routes);
 
 mongoose.set("strictQuery", false);
-const mongoDB = "mongodb://127.0.0.1/test";
+const mongoDB = "mongodb://127.0.0.1/northwind";
 const start = async () => {
   await mongoose.connect(mongoDB);
 };
-start();
+start().then(() => {
+  console.log("Connection established successfully on " + mongoDB);
+}).catch((err) => {
+  console.log("Error connecting to Mongo ...@ " + err);
+});
 
 const port = process.env.PORT || 9090;
 app.listen(port, function () {

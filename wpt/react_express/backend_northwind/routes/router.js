@@ -14,7 +14,7 @@ router.get("/about", (req, res) => {
 
 // GET /customers
 router.get("/api/customers", (req, res) => {
-  conn.query("SELECT * FROM customers", (err, results, fields) => {
+  conn.query("SELECT * FROM Customers", (err, results, fields) => {
     if (err) {
       console.log(`error occured during GET /customers query: `, err);
       res.status(500).send("No Data Found @...!");
@@ -27,7 +27,7 @@ router.get("/api/customers", (req, res) => {
 // GET /api/customers/:id
 router.get("/api/customers/:id", (req, res) => {
   conn.query(
-    "SELECT * FROM customers WHERE CustomerID=?",
+    "SELECT * FROM Customers WHERE CustomerID=?",
     [req.params.id],
     (err, result) => {
       if (err) {
@@ -49,7 +49,7 @@ router.post("/api/customers", (req, res) => {
   console.log(req.body);
 
   conn.query(
-    "INSERT INTO customers VALUES (default, ?,?,?,?,?,?)",
+    "INSERT INTO Customers VALUES (default, ?,?,?,?,?,?)",
     [CustomerName, ContactName, Address, City, PostalCode, Country],
     (err, result, fields) => {
       if (err) {
@@ -77,7 +77,7 @@ router.put("/api/customers/edit/:id", (req, res) => {
   console.log(req.body);
 
   conn.query(
-    "UPDATE customers SET CustomerName=?, ContactName=?, Address=?, City=?, PostalCode=?, Country=? WHERE CustomerID=?",
+    "UPDATE Customers SET CustomerName=?, ContactName=?, Address=?, City=?, PostalCode=?, Country=? WHERE CustomerID=?",
     [CustomerName, ContactName, Address, City, PostalCode, Country, req.params.id],
     (err, result) => {
       if (err) {
@@ -97,7 +97,7 @@ router.delete("/api/customers/delete/:id", (req, res) => {
   console.log(id);
 
   conn.query(
-    "DELETE FROM customers WHERE CustomerID = ?",
+    "DELETE FROM Customers WHERE CustomerID = ?",
     id,
     (err, result, fields) => {
       if (err) {

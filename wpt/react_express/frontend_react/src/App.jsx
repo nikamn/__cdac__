@@ -11,16 +11,18 @@ import SupplierDetails from "./components/suppliers/SupplierDetails";
 function App() {
   return (
     <>
-      <Header />
-      <Footer />
-
-      <div className="container mt-3">
-        <Routes>
-          <Route path="/" element={<SuppliersList />} />
-          <Route path="/suppliers" element={<SuppliersList />} />
-          <Route path="/suppliers/add" element={<AddSupplier />} />
-          <Route path="/suppliers/:id" element={<SupplierDetails />} />
-        </Routes>
+      <div className="d-flex flex-column min-vh-100">
+        {/* <ResponsiveNavbar /> */}
+        <Header />
+        <div className="container mt-3">
+          <Routes>
+            <Route path="/" element={<SuppliersList />} />
+            <Route path="/suppliers" element={<SuppliersList />} />
+            <Route path="/suppliers/add" element={<AddSupplier />} />
+            <Route path="/suppliers/:id" element={<SupplierDetails />} />
+          </Routes>
+        </div>
+        <Footer />
       </div>
     </>
   );
