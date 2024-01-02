@@ -12,6 +12,14 @@ const SuppliersList = () => {
       .catch((err) => console.log(err));
   }, []);
 
+  const removeSupplier = (id) => {
+    SupplierService.remove(id)
+      .then((result) =>
+        suppliers.filter((supplier) => supplier._id !== result._id)
+      )
+      .catch((err) => console.log(err));
+  };
+
   return (
     <div>
       <table className="table table-bordered table-hover table-striped-columns">
@@ -36,15 +44,21 @@ const SuppliersList = () => {
               <td className="text-center">
                 <Link
                   to={`/suppliers/edit/${supplier._id}`}
-                  state={{ supplier }}
+                  state={{ supplier: supplier, mode: "edit" }}
                 >
                   <button type="button" className="btn btn-outline-info mx-1">
                     Edit
                   </button>
                 </Link>
-                <button type="button" className="btn btn-outline-danger mx-1">
-                  Delete
-                </button>
+                <Link to={"/suppliers"}>
+                  <button
+                    type="button"
+                    className="btn btn-outline-danger mx-1"
+                    onClick={removeSupplier(supplier._id)}
+                  >
+                    Delete
+                  </button>
+                </Link>
               </td>
             </tr>
           ))}

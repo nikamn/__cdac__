@@ -4,10 +4,10 @@ import { Button, Form } from "react-bootstrap";
 import { useLocation } from "react-router-dom";
 
 const SupplierForm = () => {
-  let supplier = useLocation();
-  // console.log("Supplier: ", supplier);
+  let props = useLocation();
+  console.log("useLocation props: ", props);
 
-  const [supplierDetails, setSupplierDetails] = useState({
+  const [formData, setFormData] = useState({
     _id: "",
     company: "",
     first_name: "",
@@ -16,21 +16,47 @@ const SupplierForm = () => {
   });
 
   useEffect(() => {
-    console.log(supplier);
-    if (supplier.state !== null && supplier.state.supplier !== null) {
-      setSupplierDetails((supplierDetails) => ({
-        ...supplierDetails,
-        ...supplier.state.supplier,
-      }));
+    //console.log("props", props);
+    if (props.state !== null) {
+      if (props.state.mode === "edit") {
+        setFormData({
+          ...formData,
+          ...props.state.supplier,
+        });
+
+        //console.log("formData: ", formData);
+        // } else {
+        //   setFormData({
+        //     _id: "",
+        //     company: "",
+        //     first_name: "",
+        //     last_name: "",
+        //     job_title: "",
+        //   });
+
+        //console.log("formData: ", formData);
+      }
+    } else {
+      //console.log("formData: ", formData);
     }
   }, []);
 
+  // useEffect(() => {
+  //   setFormData({
+  //     ...formData,
+  //     ...props.state.supplier,
+  //   });
+  // }, [formData]);
+
   const handleChange = (event) => {
     const { name, value } = event.target;
-    setSupplierDetails({
-      ...supplierDetails,
+
+    setFormData({
+      ...formData,
       [name]: value,
     });
+
+    //props.state.supplier = formData;
   };
 
   return (
@@ -39,8 +65,10 @@ const SupplierForm = () => {
         <Form.Label>SupplierID</Form.Label>
         <Form.Control
           type="number"
-          value={supplierDetails._id}
+          name="_id"
+          value={formData._id}
           onChange={handleChange}
+          readOnly={props.state.mode === "edit" ? true : false}
         />
         <Form.Text className="text-muted">
           SupplierID should be unique.
@@ -51,7 +79,8 @@ const SupplierForm = () => {
         <Form.Label>Company</Form.Label>
         <Form.Control
           type="text"
-          value={supplierDetails.company}
+          name="company"
+          value={formData.company}
           onChange={handleChange}
         />
       </Form.Group>
@@ -60,7 +89,8 @@ const SupplierForm = () => {
         <Form.Label>First Name</Form.Label>
         <Form.Control
           type="text"
-          value={supplierDetails.first_name}
+          name="first_name"
+          value={formData.first_name}
           onChange={handleChange}
         />
       </Form.Group>
@@ -69,7 +99,8 @@ const SupplierForm = () => {
         <Form.Label>Last Name</Form.Label>
         <Form.Control
           type="text"
-          value={supplierDetails.last_name}
+          name="last_name"
+          value={formData.last_name}
           onChange={handleChange}
         />
       </Form.Group>
@@ -78,13 +109,14 @@ const SupplierForm = () => {
         <Form.Label>Job Title</Form.Label>
         <Form.Control
           type="text"
-          value={supplierDetails.job_title}
+          name="job_title"
+          value={formData.job_title}
           onChange={handleChange}
         />
       </Form.Group>
 
-      <Button variant="primary" type="submit">
-        Submit
+      <Button variant="primary" type="button">
+        {props.state === null ? "Add Supplier" : "Edit Supplier"}
       </Button>
     </Form>
   );

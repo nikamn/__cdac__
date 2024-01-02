@@ -13,11 +13,11 @@ const create = (data) => {
 };
 
 const update = (id, data) => {
-  return http.put(`/suppliers/${id}`, data);
+  return http.put(`/suppliers/edit/${id}`, data);
 };
 
 const remove = (id) => {
-  return http.delete(`/suppliers/${id}`);
+  return http.delete(`/suppliers/delete/${id}`);
 };
 
 const SupplierService = {

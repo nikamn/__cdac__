@@ -29,7 +29,11 @@ const Header = () => {
           </Link>
         </li>
         <li>
-          <Link to={"/suppliers/add"} className="nav-link px-2 link-success">
+          <Link
+            to={"/suppliers/add"}
+            state={{ mode: "add" }}
+            className="nav-link px-2 link-success"
+          >
             Add New
           </Link>
         </li>
