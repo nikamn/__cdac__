@@ -33,3 +33,9 @@ Servers/
 target/
 
 node_modules/
+
+bin/
+.vs/
+obj/
+migrations/
+wwwroot/
